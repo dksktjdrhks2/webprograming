@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="EUC-KR">
+		<title>Insert title here</title>
+		<link rel="stylesheet" type="text/css" href="css/out.css" />
+		<script type="text/javascript" src="js/jquery-3.4.1.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				$('.btn').click(function() {
+					rcp = $('.rcp').val();
+					if(rcp == "가위"){
+						$('.img_rcp').append("<img src='img/scissor.png'>");
+					}
+				})
+			});
+		</script>
+	</head>
+	<body>
+		<h1>가위바위보</h1>
+		<input type="text" class="rcp">
+		<input type="button" class="btn" value="내기"><br>
+		<div class="dot_square">
+			<div class="img_rcp"></div>
+		</div>
+	</body>
+</html>

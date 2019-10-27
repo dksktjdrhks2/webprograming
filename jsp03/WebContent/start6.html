@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="EUC-KR">
+		<title>Insert title here</title>
+		<!-- css, js는 head안에 넣는다. -->
+		<script type="text/javascript" src="js/jquery-3.4.1.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				$('.btn').click(function() {
+					reValue = $('.reply').val();
+					idValue = $('.id').val();
+					// 페이지를 넘기지않고 원하는 곳 마다 서버와 통신하는 자바 스크립트 기술.
+					$.ajax({
+						url: "server4.jsp",
+						data: {
+							id : idValue,
+							rep : reValue
+						},
+						success:function(result){
+							$('ul').append('<li><img src="img/car.png" width=50 height=25>' + result + "</li>");
+						}
+					});
+				});
+			});
+		</script>
+		<style type="text/css">
+			th{
+				border: 1px solid skyblue;
+			}
+			td{
+				border: 1px solid red;
+			}
+		</style>
+	</head>
+	<body>
+		<img alt="" src="img/car.png" width="200" height="100"><br>
+		<table style="border: 1px solid blue; width: 400px;">
+			<tr>
+				<th>아이디</th>
+				<th>제목</th>
+				<th>내용</th>
+				<th>작가</th>
+			</tr>
+			<tr>
+				<td>dog</td>
+				<td>dog</td>
+				<td>dog</td>
+				<td>dog</td>
+			</tr>
+		</table>
+		<hr color="red">
+		<!-- 느낌을 댓글로 입력하는 곳. -->
+		작성자 : <input type="text" class="id"><br>
+		입력 : <input type="text" class="reply">
+		<input type="button" class="btn" value="작성">
+		<hr color="red">
+		<!-- 느낌이 추가되는 곳. -->
+		<div><ul></ul></div>
+	</body>
+</html>

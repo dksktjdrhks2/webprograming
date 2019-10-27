@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="EUC-KR">
+		<title>Insert title here</title>
+		<link rel="stylesheet" type="text/css" href="css/out.css" />
+		<script type="text/javascript" src="js/jquery-3.4.1.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				$('.btn').click(function() {
+					$('div').append("<img src='img/rock.png' style='width: 50px; height: 30px;'>바위");
+				})
+				$('.btn2').click(function() {
+					$('div').append("헷");
+				})
+			});
+		</script>
+	</head>
+	<body>
+		<input type="button" value="이미지추가" class="btn">
+		<input type="button" value="텍스트추가" class="btn2">
+		<div></div>
+	</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="EUC-KR">
+		<title>Insert title here</title>
+		<!-- css, js는 head안에 넣는다. -->
+		<link rel="stylesheet" type="text/css" href="css/out.css" />
+		<script type="text/javascript" src="js/jquery-3.4.1.js"></script>
+		<script type="text/javascript">
+			// 1. body부분을 먼저 인식하게 하기위한 설정.
+			$(function() {
+				alert("ㅎㅇ jquery야!");
+				// 2. 입력한 값을 가지고 와서
+				idValue = $('input').val();
+				alert("입력한 아이디는 >> " + idValue);
+				// 3. 입력한 값이 5보타 큰지 체크
+				if(idValue.length >= 5){
+					//서버로 입력한 정보를 넘김.
+					location.href = "server.jsp?id=" + idValue;
+				}else{
+					alert("5글자보다 크게 입력하세요.");
+				}
+			});
+		</script>
+	</head>
+	<body>
+		ㅎㅇㅎㅇ. 3일차네.<br>
+		아이디 <input type="text" value="ro00ot" name="id"><br>
+		<!-- 패스워드 <input type="text"><br> -->
+		<input type="button" value="입력값 체크">
+	</body>
+</html>

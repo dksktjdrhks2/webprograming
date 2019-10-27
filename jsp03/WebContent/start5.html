@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="EUC-KR">
+		<title>Insert title here</title>
+		<!-- css, js는 head안에 넣는다. -->
+		<link rel="stylesheet" type="text/css" href="css/out.css" />
+		<script type="text/javascript" src="js/jquery-3.4.1.js"></script>
+		<script type="text/javascript">
+			// 1. body부분을 먼저 인식하게 하기위한 설정.
+			$(function() {
+				$('.btn').click(function() {
+					// 2. 입력한 값을 가지고 와서
+					pwValue = $('.pw').val();
+					idValue = $('.id').val();
+					$('.id_text').text("");
+					$('.pw_text').text("");
+					// 3. 입력한 값이 5글자보다 큰지 체크
+					if(idValue.length >= 5){
+						if(pwValue.length >= 8){
+							// 서버로 입력한 정보를 넘김.
+							location.href = "server2.jsp?id=" + idValue + "&pw=" + pwValue;	
+						}else{
+							$('.pw_text').text("비밀번호를 8자 이상으로 설정 해 주세요.");
+						}
+					}else{
+						// 5글자보다 작다면
+						$('.id_text').text("5자 이상의 값만 입력 할 수 있습니다.");
+					}
+				})
+			});
+		</script>
+	</head>
+	<body>
+		ㅎㅇㅎㅇ. 3일차네.<br>
+		아이디 <input class="id" type="text" name="id"><br>
+		<div class="id_text" style="color: red; font-size: 10px;"></div>
+		패스워드 <input class="pw" type="text" name="pw"><br>
+		<div class="pw_text" style="color: red; font-size: 10px;"></div>
+		<input class="btn" type="button" value="입력값 체크">
+	</body>
+</html>
