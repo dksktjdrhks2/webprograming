@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<script type="text/javascript" src="js/jquery-3.4.1.js"></script>
+		<script type="text/javascript">
+		/* body부분 부터 읽고 나서 자바 스크립트 실행 하도록 함. */
+			$(function(){
+				/* 버튼을 누르는 이벤트가 발생을 했을때, 조선일보 사이트 연결 */
+				$('.btn1').click(function(){
+					$.ajax({
+						url : "ent.xml",
+						success : function(){
+							alert("조선 일보 사이트에 접속 성공.");
+						}
+					});
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<input type="button" class="btn1" value="신문 기사 퍼오기">
+	</body>
+</html>

@@ -1,0 +1,11 @@
+@charset "EUC-KR";
+body{
+	color: blue; ;를 반드시 넣어야 해요.
+}
+.dot_square{
+	border: 1px dotted red;
+	width: 400px; height: 200px;
+}
+img{
+	width: 200px; height: 150px;
+}

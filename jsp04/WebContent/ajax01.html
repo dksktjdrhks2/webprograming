@@ -1,0 +1,41 @@
+<html>
+
+<head>
+	<title>title</title>
+	<script type="text/javascript" src="js/jquery-3.4.1.js"></script>
+	<script type="text/javascript">
+	/* body부분 부터 읽고 나서 자바 스크립트 실행 하도록 함. */
+		$(function(){
+			/* 버튼을 누르는 이벤트가 발생을 했을때, 조선일보 사이트 연결 */
+			$('.btn1').click(function(){
+				$.ajax({
+					url : "json/wifi.json",
+					data : {
+						url : "http://www.chosun.com/site/data/rss/ent.xml",
+						api_key : "lcwevz9zokozyxrmyxs07lo051jxo1p3en3ec7yl",
+						count : 10
+					},
+					success : function(result){
+						itemsValues = result.items; // itemsValues에 result에 items에있는 값들을 받아온다
+						// 값 들을 배열로 가지고 온다.
+						for(i = 0; i < itemsValues.length; i++){
+							title = itemsValues[i].title; // 받아온 값들중에 title
+							link = itemsValues[i].link; // 받아온 값들중에 link
+							img = itemsValues[i].thumbnail; // 받아온 값들중에 thumbnail
+							des = itemsValues[i].description;
+							des_ls = des.split('K');
+							$('div').append(des);
+						}
+					}
+				});
+			});
+		});
+	</script>
+</head>
+
+<body>
+	<input type="button" class="btn1" value="신문 기사 퍼오기">
+	<div></div>
+</body>
+
+</html>
