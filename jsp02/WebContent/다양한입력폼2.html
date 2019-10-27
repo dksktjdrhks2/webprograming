@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="EUC-KR">
+		<title>Insert title here</title>
+	</head>
+	<body>
+		<form action="insert4.jsp">
+			<h1>동아리 가입 신청서.</h1>
+			<hr>
+			동아리 이름:
+				<input type="text" name="dongname"><br>
+			이름:
+				<input type="text" name="name"><br>
+			생년월일:
+				<select name="b_year">
+					<option value="1990~2000">1990~2000</option>
+					<option value="2001~2010">2001~2010</option>
+					<option value="2011">2011~</option>
+				</select>
+				<select name="b_month">
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+					<option value="6">6</option>
+					<option value="7">7</option>
+					<option value="8">8</option>
+					<option value="9">9</option>
+					<option value="10">10</option>
+					<option value="11">11</option>
+					<option value="12">12</option>
+				</select>
+				<select name="b_day">
+					<option value="1~10">1~10</option>
+					<option value="11~20">11~20</option>
+					<option value="21~">21~</option>
+				</select>
+				<br>
+			가입경로:
+				<input type="checkbox" value="friend" name="dir">지인추천
+				<input type="checkbox" value="search" name="dir">인터넷 검색
+				<input type="checkbox" value="school" name="dir">학교추천<br>
+			정보 저장 동의:
+				<input type="radio" value="agree" name="agrees">동의
+				<input type="radio" value="disagree" name="agrees">동의 안함<br>
+			<input type="submit" value="동아리 가입 신청">
+		</form>
+	</body>
+</html>

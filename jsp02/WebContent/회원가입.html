@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="EUC-KR">
+		<title>Insert title here</title>
+		<style>
+			.square{
+				margin: 10px;
+				border:1px solid #dddddd; padding:10px;
+				width: 400px;
+				height: 27px;
+			}
+			input{
+				height: 20px;
+				width: 370px;
+				border: 0;
+			}
+			body{
+				background: #f2f2f2;
+			}
+		</style>
+	</head>
+	<body>
+		<center>
+			<table>
+				<tr>
+					<img src="img/naverlogo.PNG" style="width: 400px; height: 40px">
+				</tr>
+				<form action="insert.jsp">
+				<tr>
+					<td>
+						<b>아이디</b><br>
+						<div class="square">
+							<input type="text" style="width: 100px"> <b>@naver.com</b>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td align="right"><b>비밀번호</b></td>
+					<td><input type="text" style="width: 220px"></td>
+				</tr>
+				<tr>
+					<td align="right"><b>비밀번호 확인</b></td>
+					<td><input type="text" style="width: 220px"></td>
+				</tr>
+				<tr>
+					<td align="right"><b>이름</b></td>
+					<td><input type="text" style="width: 220px"></td>
+				</tr>
+				<tr>
+					<td align="right"><b>이메일</b></td>
+					<td><input type="text" style="width: 100px;">@<input type="text" style="width: 100px;"></td>
+				</tr>
+				<tr>
+					<input type="image" src="img/join.PNG" value="서버로 전송">
+				</tr>
+				</form>
+			</table>
+		</center>
+	</body>
+</html>
