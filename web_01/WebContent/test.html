@@ -13,7 +13,7 @@
 						var inputVal = $(this).val();
 						$(this).val(inputVal.replace(/[^a-z0-9]/gi,''));
 					}
-					if(idVal.length > 0 && pwVal.length > 0 && pwVal != "비밀번호"){
+					if(idVal.length > 4 && pwVal.length > 4 && pwVal != "비밀번호"){
 						subColor = document.getElementById("submit-btn");
 						subColor.style.backgroundColor = "#8bbbbd";
 					}else{
@@ -28,7 +28,7 @@
 						var inputVal = $(this).val();
 						$(this).val(inputVal.replace(/[^a-z0-9]/gi,''));
 					}
-					if(idVal.length > 0 && pwVal.length > 0 && idVal != "아이디"){
+					if(idVal.length > 4 && pwVal.length > 4 && idVal != "아이디"){
 						subColor = document.getElementById("submit-btn");
 						subColor.style.backgroundColor = "#8bbbbd";
 					}else{
@@ -96,22 +96,6 @@
 					divColor.style.border = "1px solid gray";
 				});
 			});
-			
-			
-			function myFunction() {
-				id = $('.id_in');
-				pw = $('.pw_in');
-				if(id.val() != "아이디" && pw.val() != "비밀번호"){
-					if(id.val() != "" && pw.val() != ""){
-				    	subColor = document.getElementById("submit-btn");
-						subColor.style.backgroundColor = "#8bbbbd";
-				    }else{
-				    	subColor = document.getElementById("submit-btn");
-						subColor.style.backgroundColor = "#e1e1e1";
-				    }
-				}
-			}
-			
 		</script>
 		<style type="text/css">
 			body{
@@ -120,7 +104,7 @@
 	            background-size: 100%;
 	            background-repeat: no-repeat;
 	            background-attachment: fixed;
-	            background-position: 0px 50%;
+	            background-position: 0px;
 			}
 			.square{
 				border: 1px solid white;
@@ -142,6 +126,9 @@
 				color: #c9c9c9;
 				outline: none;
 			}
+			#test_btn1{ border-radius: 20px; width: 300px; height: 50px; } 
+			#btn_group button{ border: 1px solid skyblue; background-color: rgba(0,0,0,0); color: skyblue; padding: 5px; } 
+			#btn_group button:hover{ color:white; background-color: skyblue;
 		</style>
 	</head>
 	<body>
@@ -170,8 +157,13 @@
 					<tr>
 						<td>
 						<!-- 8bbbbd -->
-							<div name="submit-btn" id="submit-btn" class="square_input" style="border: 0; line-height: 50px; background: #e1e1e1;" align="center">
+							<!-- <div name="submit-btn" id="submit-btn" class="square_input" style="border: 0; line-height: 50px; background: #e1e1e1;" align="center">
 								<font style="font-weight: bold; color: white;">로그인</font>
+							</div> -->
+							<div align="center">
+								<button id="test_btn1">
+									로그인
+								</button>
 							</div>
 						</td>
 					</tr>
