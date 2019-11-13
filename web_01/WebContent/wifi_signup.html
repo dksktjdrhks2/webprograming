@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>회원 가입</title>
+	</head>
+	<link rel="stylesheet" type="text/css" href="webcss.css" />
+	<script type="text/javascript" src="js/jquery-3.4.1.js"></script>
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script type="text/javascript">
+		idBool = false;
+		pwBool = false;
+		bBool = false;
+		genBool = false;
+		function enable() {
+			
+		}
+		function disable() {
+			$('#signup_btn').prop('disabled', true);
+		}
+		$(function(){
+			id = $('.id_in');
+			pw = $('.pw_in');
+			pwre = $('.pw_in_re');
+			birth = $('#datepicker');
+			bVal = $('#datepicker').val();
+			if(id.val() != "아이디"){
+				inpColor = document.getElementById("id-input");
+				inpColor.style.color = "black";
+			}
+			if(pw.val() != "비밀번호"){
+				inpColor = document.getElementById("pw-input");
+				inpColor.style.color = "black";
+			}
+			if(pwre.val() != "비밀번호 확인"){
+				inpColor = document.getElementById("pw-input");
+				inpColor.style.color = "black";
+			}
+			//id 포커스  얻을때
+			id.focus(function(){
+				if(id.val() == "아이디"){
+					id.val('');
+				}
+				divColor = document.getElementById("id_div");
+				divColor.style.border = "2px solid green";
+				inpColor = document.getElementById("id-input");
+				inpColor.style.color = "black";
+			});
+			pw.focus(function(){
+				if(pw.val() == "비밀번호"){
+					pw.val('');
+				}
+				divColor = document.getElementById("pw_div");
+				divColor.style.border = "2px solid green";
+				inpColor = document.getElementById("pw-input");
+				inpColor.style.color = "black";
+			});
+			pwre.focus(function(){
+				if(pwre.val() == "비밀번호 확인"){
+					pwre.val('');
+				}
+				divColor = document.getElementById("pwre_div");
+				divColor.style.border = "2px solid green";
+				inpColor = document.getElementById("pw-input-re");
+				inpColor.style.color = "black";
+			});
+			// id 포커스 나갈때
+			id.blur(function(){
+			    if(id.val() != "" && pw.val() != "" && pwre.val() != "" && pw.val() != "비밀번호" && pwre.val() == "비밀번호 확인" && bVal != ""){
+			    	subColor = document.getElementById("signup_btn");
+					subColor.style.backgroundColor = "#8bbbbd";
+					idBool = true;
+			    }else{
+			    	subColor = document.getElementById("signup_btn");
+					subColor.style.backgroundColor = "#e1e1e1";
+			    }
+			    divColor = document.getElementById("id_div");
+			    divColor.style.border = "1px solid gray";
+			});
+			pw.blur(function(){
+				if(id.val() != "" && pw.val() != "" && pwre.val() != "" && pwre.val() != "비밀번호 확인" && bVal != ""){
+			    	subColor = document.getElementById("signup_btn");
+					subColor.style.backgroundColor = "#8bbbbd";
+					pwBool = true;
+			    }else{
+			    	subColor = document.getElementById("signup_btn");
+					subColor.style.backgroundColor = "#e1e1e1";
+			    }
+				divColor = document.getElementById("pw_div");
+				divColor.style.border = "1px solid gray";
+			});
+			pwre.blur(function(){
+				if(id.val() != "" && pw.val() != "" && pwre.val() != "" && pwre.val() != "비밀번호 확인" && bVal != ""){
+			    	subColor = document.getElementById("signup_btn");
+					subColor.style.backgroundColor = "#8bbbbd";
+			    }else{
+			    	subColor = document.getElementById("signup_btn");
+					subColor.style.backgroundColor = "#e1e1e1";
+			    }
+				divColor = document.getElementById("pwre_div");
+				divColor.style.border = "1px solid gray";
+			});
+		});
+		$(document).ready(function() {
+		    $( "#datepicker" ).datepicker({
+		      	changeMonth: true,
+		      	changeYear: true
+		    });
+			$("input[name=id-input]").keyup(function(event){
+				idVal = $('.id_in').val();
+				pwVal = $('.pw_in').val();
+				bVal = $('#datepicker').val();
+				if (!(event.keyCode >=37 && event.keyCode<=40)) {
+					var inputVal = $(this).val();
+					$(this).val(inputVal.replace(/[^a-z0-9]/gi,''));
+				}
+				if(idVal.length > 4 && pwVal.length > 4 && pwVal != "비밀번호" && bVal != ""){
+					subColor = document.getElementById("signup_btn");
+					subColor.style.backgroundColor = "#8bbbbd";
+				}else{
+					subColor = document.getElementById("signup_btn");
+					subColor.style.backgroundColor = "#e1e1e1";
+				}
+				if(idVal.length < 5){
+				    $('.id_err').text('아이디가 5글자 이상이어야 합니다.');
+				    subColor = document.getElementById("signup_btn");
+					subColor.style.backgroundColor = "#e1e1e1";
+				}else{
+					$('.id_err').text('');
+					subColor = document.getElementById("signup_btn");
+					subColor.style.backgroundColor = "#8bbbbd";
+				}
+			});
+			$("input[name=pw-input]").keyup(function(event){
+				idVal = $('.id_in').val();
+				pwVal = $('.pw_in').val();
+				if (!(event.keyCode >=37 && event.keyCode<=40)) {
+					var inputVal = $(this).val();
+					$(this).val(inputVal.replace(/[^a-z0-9]/gi,''));
+				}
+				if(idVal.length > 4 && pwVal.length > 4 && idVal != "아이디" && bVal != ""){
+					subColor = document.getElementById("signup_btn");
+					subColor.style.backgroundColor = "#8bbbbd";
+				}else{
+					subColor = document.getElementById("signup_btn");
+					subColor.style.backgroundColor = "#e1e1e1";
+				}
+				if(pwVal.length < 5){
+				    $('.pw_err').text('패스워드 형식이 일치하지 않습니다.');
+				    subColor = document.getElementById("signup_btn");
+					subColor.style.backgroundColor = "#e1e1e1";
+				}else{
+					$('.pw_err').text('');
+					subColor = document.getElementById("signup_btn");
+					subColor.style.backgroundColor = "#8bbbbd";
+				}
+			});
+			$("input[name=pw-input-re]").keyup(function(event){
+				idVal = $('.id_in').val();
+				pwVal = $('.pw_in').val();
+				pwreVal = $('.pw_in_re').val();
+				if (!(event.keyCode >=37 && event.keyCode<=40)) {
+					var inputVal = $(this).val();
+					$(this).val(inputVal.replace(/[^a-z0-9]/gi,''));
+				}
+				if(pwreVal.length < 5){
+					$('.pw_re_err').text('패스워드 형식이 일치하지 않습니다.');
+					subColor = document.getElementById("signup_btn");
+					subColor.style.backgroundColor = "#e1e1e1";
+					if(pwVal != pwreVal){
+				    	$('.pw_re_err').text('패스워드와 일치하지 않습니다.');
+				    	subColor = document.getElementById("signup_btn");
+						subColor.style.backgroundColor = "#e1e1e1";
+					}else{
+						$('.pw_re_err').text('');
+						subColor = document.getElementById("signup_btn");
+						subColor.style.backgroundColor = "#8bbbbd";
+					}
+				}else{
+					$('.pw_re_err').text('');
+					subColor = document.getElementById("signup_btn");
+					subColor.style.backgroundColor = "#8bbbbd";
+				}
+			});
+			dVal = $('#datepicker').val();
+			genVal = $('.gen').val();
+			if(dVal != null){
+				bBool = true;
+			}
+			if(genVal != null){
+				genBool = true;
+			}
+			if(idBool && pwBool && genBool && bBool && ('.pw_in').val() == ('.pw_in_re').val()){
+				$('#signup_btn').prop('disabled', false);
+			}
+		});
+	</script>
+	<style>
+		body{
+				background-color: #E7E7E8;
+	            background-image: url('img/maps_back.png');
+	            background-size: 100%;
+	            background-repeat: no-repeat;
+	            background-attachment: fixed;
+	           	background-position: 0px;
+		}
+		.square{
+				border: 1px solid white;
+				border-radius: 20px;
+				background: white;
+				width: 400px; height: 570px;
+				margin-top: 3%;
+				box-shadow: 10px 10px 60px #8bbbbd;
+				margin-top: 10%;
+		}
+		.square_input{
+				border: 1px solid gray;
+				border-radius: 10px;
+				background: white;
+				width: 300px; height: 50px;
+		}
+		input {
+			border: 1px solid white;
+			color: #c9c9c9;
+			outline: none;
+		}
+		.gen_cir{
+			border: 2px solid gray;
+			width: 20px; height: 20px;
+			border-radius: 10px;
+		}
+		.radio_btn{
+			border: none;
+		}
+		#signup_btn { border-radius: 10px; width: 300px; height: 50px; outline: none; } 
+		#datepicker {
+			border: 1px solid gray;
+			border-radius: 10px;
+			background: white;
+			width: 300px; height: 50px;
+			color: black;
+		}
+	</style>
+	<body>
+		<div class="center" align="center">
+			<div class="square" align="center" style="font-weight: bold; font: monospace;">
+			<form action="insert2.jsp" method="post">
+				<div style="color: #56b7ba; margin-top: 5%; margin-bottom: 1%;">아이디</div>
+				<div class="square_input" id="id_div">
+					<input name="id" id="id-input" class="id_in" name="id-input" value="아이디" style="margin-top: 7px; width: 260px; height: 30px; font-size: 16px; font-weight: bold;">
+				</div>
+				<div id="id_err" class="id_err" style="color:red; font-size: 12px" align="center"></div>
+				<!-- ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ -->
+				<div style="color: #56b7ba; margin-top: 5%; margin-bottom: 1%;">비밀번호</div>
+				<div class="square_input" id="pw_div">
+					<input name="pw" id="pw-input" class="pw_in" name="pw-input" value="비밀번호" style="margin-top: 7px; width: 260px; height: 30px; font-size: 16px; font-weight: bold;">
+				</div>
+				<div id="pw_err" class="pw_err" style="color:red; font-size: 12px" align="center"></div>
+				<!-- ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ -->
+				<div style="color: #56b7ba; margin-top: 5%; margin-bottom: 1%;">비밀번호 확인</div>
+				<div class="square_input" id="pwre_div">
+					<input id="pw-input-re" class="pw_in_re" name="pw-input-re" value="비밀번호 확인" style="margin-top: 7px; width: 260px; height: 30px; font-size: 16px; font-weight: bold;">
+				</div>
+				<div id="pw_re_err" class="pw_re_err" style="color:red; font-size: 12px" align="center"></div>
+				<!-- ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ -->
+				<div style="color: #56b7ba; margin-top: 5%; margin-bottom: 1%;">생년 월일</div>
+				<input name="birth" type="text" id="datepicker" style="text-align: center;">
+				<div style="color: #56b7ba; margin-top: 5%; margin-bottom: 1%;">성별</div>
+				<div>
+					<table>
+						<tr>
+							<td>
+								<div class="checks">
+                      				<input class="gen" type="radio" id="ex_rd" name="gender" value="male"> 
+                      				<label for="ex_rd" style="color: #4a6363;">남</label> 
+                    			</div>
+							</td>
+							<td> </td>
+							<td>
+								<div class="checks">
+                      				<input class="gen" type="radio" id="ex_rd2" name="gender" value="female"> 
+                      				<label for="ex_rd2" style="color: #4a6363;">여</label> 
+                    			</div>
+							</td>
+						</tr>
+					</table>
+					<button type="submit" id="signup_btn" class="signup_btn" style="font-size: 16px; font: monospace; background: #e1e1e1; color: #4a6363; font-weight: bold; border: none; margin-top: 5%">
+						회원 가입
+					</button>
+				</form>	
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

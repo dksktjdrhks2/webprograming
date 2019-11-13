@@ -5,6 +5,10 @@
 		<title>전국 무료 와이파이</title>
 		<script type="text/javascript" src="js/jquery-3.4.1.js"></script>
 		<script type="text/javascript">
+			function login() {
+				location.href = "wifi_next.html";
+			}
+			
 			$(document).ready(function(){
 				$("input[name=id-input]").keyup(function(event){
 					idVal = $('.id_in').val();
@@ -13,11 +17,11 @@
 						var inputVal = $(this).val();
 						$(this).val(inputVal.replace(/[^a-z0-9]/gi,''));
 					}
-					if(idVal.length > 0 && pwVal.length > 0 && pwVal != "비밀번호"){
-						subColor = document.getElementById("submit-btn");
+					if(idVal.length > 4 && pwVal.length > 4 && pwVal != "비밀번호"){
+						subColor = document.getElementById("login_btn");
 						subColor.style.backgroundColor = "#8bbbbd";
 					}else{
-						subColor = document.getElementById("submit-btn");
+						subColor = document.getElementById("login_btn");
 						subColor.style.backgroundColor = "#e1e1e1";
 					}
 				});
@@ -28,11 +32,11 @@
 						var inputVal = $(this).val();
 						$(this).val(inputVal.replace(/[^a-z0-9]/gi,''));
 					}
-					if(idVal.length > 0 && pwVal.length > 0 && idVal != "아이디"){
-						subColor = document.getElementById("submit-btn");
+					if(idVal.length > 4 && pwVal.length > 4 && idVal != "아이디"){
+						subColor = document.getElementById("login_btn");
 						subColor.style.backgroundColor = "#8bbbbd";
 					}else{
-						subColor = document.getElementById("submit-btn");
+						subColor = document.getElementById("login_btn");
 						subColor.style.backgroundColor = "#e1e1e1";
 					}
 					if(pwVal.length < 5){
@@ -46,6 +50,14 @@
 			$(function(){
 				id = $('.id_in');
 				pw = $('.pw_in');
+				if(id.val() != "아이디"){
+					inpColor = document.getElementById("id-input");
+					inpColor.style.color = "black";
+				}
+				if(pw.val() != "비밀번호"){
+					inpColor = document.getElementById("pw-input");
+					inpColor.style.color = "black";
+				}
 				//id 포커스  얻을때
 				id.focus(function(){
 					if(id.val() == "아이디"){
@@ -68,10 +80,10 @@
 				// id 포커스 나갈때
 				id.blur(function(){
 				    if(id.val() != "" && pw.val() != "" && pw.val() != "비밀번호"){
-				    	subColor = document.getElementById("submit-btn");
+				    	subColor = document.getElementById("login_btn");
 						subColor.style.backgroundColor = "#8bbbbd";
 				    }else{
-				    	subColor = document.getElementById("submit-btn");
+				    	subColor = document.getElementById("login_btn");
 						subColor.style.backgroundColor = "#e1e1e1";
 				    }
 				    divColor = document.getElementById("id_div");
@@ -86,32 +98,16 @@
 				});
 				pw.blur(function(){
 					if(id.val() != "" && pw.val() != ""){
-				    	subColor = document.getElementById("submit-btn");
+				    	subColor = document.getElementById("login_btn");
 						subColor.style.backgroundColor = "#8bbbbd";
 				    }else{
-				    	subColor = document.getElementById("submit-btn");
+				    	subColor = document.getElementById("login_btn");
 						subColor.style.backgroundColor = "#e1e1e1";
 				    }
 					divColor = document.getElementById("pw_div");
 					divColor.style.border = "1px solid gray";
 				});
 			});
-			
-			
-			function myFunction() {
-				id = $('.id_in');
-				pw = $('.pw_in');
-				if(id.val() != "아이디" && pw.val() != "비밀번호"){
-					if(id.val() != "" && pw.val() != ""){
-				    	subColor = document.getElementById("submit-btn");
-						subColor.style.backgroundColor = "#8bbbbd";
-				    }else{
-				    	subColor = document.getElementById("submit-btn");
-						subColor.style.backgroundColor = "#e1e1e1";
-				    }
-				}
-			}
-			
 		</script>
 		<style type="text/css">
 			body{
@@ -120,15 +116,15 @@
 	            background-size: 100%;
 	            background-repeat: no-repeat;
 	            background-attachment: fixed;
-	            background-position: 0px 50%;
+	            background-position: 0px;
 			}
 			.square{
 				border: 1px solid white;
 				border-radius: 20px;
 				background: white;
 				width: 400px; height: 400px;
-				margin: 25%;
 				box-shadow: 10px 10px 60px #8bbbbd;
+				margin-top: 15%;
 			}
 			.square_input{
 				border: 1px solid gray;
@@ -142,6 +138,7 @@
 				color: #c9c9c9;
 				outline: none;
 			}
+			#login_btn { border-radius: 10px; width: 300px; height: 50px; outline: none; } 
 		</style>
 	</head>
 	<body>
@@ -170,8 +167,13 @@
 					<tr>
 						<td>
 						<!-- 8bbbbd -->
-							<div name="submit-btn" id="submit-btn" class="square_input" style="border: 0; line-height: 50px; background: #e1e1e1;" align="center">
+							<!-- <div name="submit-btn" id="submit-btn" class="square_input" style="border: 0; line-height: 50px; background: #e1e1e1;" align="center">
 								<font style="font-weight: bold; color: white;">로그인</font>
+							</div> -->
+							<div align="center">
+								<button id="login_btn" class="login_btn" style="font-size: 16px; font: monospace; background: #e1e1e1; color: #4a6363; font-weight: bold; border: none;" onclick='login()'>
+									로그인
+								</button>
 							</div>
 						</td>
 					</tr>
@@ -179,7 +181,7 @@
 						<td style="color: black; font-size: 12px;">
 						<br>
 							<div align="center" style="font-size: 13px; font-weight: bold; color: gray">
-								<a href="#" style="color: gray;">아직 회원이 아니십니까?</a><br><a href="#" style="color: gray;">계정을 찾으시겠습니까?</a>
+								<a href="wifi_signup.html" style="color: gray;">아직 회원이 아니십니까?</a><br><a href="wifi_findacc.html" style="color: gray;">계정을 찾으시겠습니까?</a>
 							</div>
 						</td>
 					</tr>
