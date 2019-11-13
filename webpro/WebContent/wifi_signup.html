@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>회원 가입</title>
+	</head>
+	<link rel="stylesheet" type="text/css" href="webcss.css" />
+	<script type="text/javascript" src="js/jquery-3.4.1.js"></script>
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script type="text/javascript">
+		function signup() {
+			alert('회원가입 버튼 클릭');
+		}
+		
+		$(document).ready(function() {
+		    $( "#datepicker" ).datepicker({
+		      	changeMonth: true,
+		      	changeYear: true
+		    });
+		});
+	</script>
+	<style>
+		body{
+				background-color: #E7E7E8;
+	            background-image: url('img/maps_back.png');
+	            background-size: 100%;
+	            background-repeat: no-repeat;
+	            background-attachment: fixed;
+	           	background-position: 0px;
+		}
+		.square{
+				border: 1px solid white;
+				border-radius: 20px;
+				background: white;
+				width: 400px; height: 570px;
+				margin-top: 3%;
+				box-shadow: 10px 10px 60px #8bbbbd;
+		}
+		.square_input{
+				border: 1px solid gray;
+				border-radius: 10px;
+				background: white;
+				width: 300px; height: 50px;
+		}
+		input {
+			border: 1px solid white;
+			color: #c9c9c9;
+			outline: none;
+		}
+		.gen_cir{
+			border: 2px solid gray;
+			width: 20px; height: 20px;
+			border-radius: 10px;
+		}
+		.radio_btn{
+			border: none;
+		}
+		#signup_btn { border-radius: 10px; width: 300px; height: 50px; outline: none; } 
+		#datepicker {
+			border: 1px solid gray;
+			border-radius: 10px;
+			background: white;
+			width: 300px; height: 50px;
+			color: black;
+		}
+	</style>
+	<body>
+		<div class="center" align="center">
+			<div class="square" align="center" style="font-weight: bold; font: monospace;">
+				<div style="color: #56b7ba; margin-top: 5%; margin-bottom: 1%;">아이디</div>
+				<div class="square_input" id="id_div">
+					<input id="id-input" class="id_in" name="id-input" value="아이디" style="margin-top: 7px; width: 260px; height: 30px; font-size: 16px; font-weight: bold;">
+				</div>
+				<div style="color: #56b7ba; margin-top: 5%; margin-bottom: 1%;">비밀번호</div>
+				<div class="square_input" id="pw_div">
+					<input id="pw-input" class="pw_in" name="pw-input" value="비밀번호" style="margin-top: 7px; width: 260px; height: 30px; font-size: 16px; font-weight: bold;">
+				</div>
+				<div style="color: #56b7ba; margin-top: 5%; margin-bottom: 1%;">비밀번호 확인</div>
+				<div class="square_input">
+					<input id="pw-input-re" class="pw_in_re" name="pw-input-re" value="비밀번호 확인" style="margin-top: 7px; width: 260px; height: 30px; font-size: 16px; font-weight: bold;">
+				</div>
+				<div style="color: #56b7ba; margin-top: 5%; margin-bottom: 1%;">생년 월일</div>
+				<input type="text" id="datepicker" style = "text-align: center;">
+				<div style="color: #56b7ba; margin-top: 5%; margin-bottom: 1%;">성별</div>
+				<div>
+					<table>
+						<tr>
+							<td>
+								<div class="checks">
+                      				<input type="radio" id="ex_rd" name="ex_rds" value="male"> 
+                      				<label for="ex_rd" style="color: #4a6363;">남</label> 
+                    			</div>
+							</td>
+							<td> </td>
+							<td>
+								<div class="checks">
+                      				<input type="radio" id="ex_rd2" name="ex_rds"> 
+                      				<label for="ex_rd2" style="color: #4a6363;">여</label> 
+                    			</div>
+							</td>
+						</tr>
+					</table>
+					<button id="signup_btn" class="signup_btn" style="font-size: 16px; font: monospace; background: #e1e1e1; color: #4a6363; font-weight: bold; border: none; margin-top: 5%" onclick='signup()'>
+						회원 가입
+					</button>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
