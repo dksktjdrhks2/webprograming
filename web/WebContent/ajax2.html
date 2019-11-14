@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>title</title>
+	<script type="text/javascript" src="js/jquery-3.4.1.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function() { 
+		$.getJSON('/wifi.json', function(data) { 
+			var html = [];
+			alert(data);
+			$.each(data, function(i, item) { 
+				html.push('<div >'); 
+				html.push('<h3 >' + item.firstName + '</h3>'); 
+				html.push('<div >' + item.lastName + '</div>'); 
+				html.push('<div >' + item.age + '</div>'); 
+				html.push('<div >' + item.address.streetAddress + '</div>'); 
+				html.push('<div >' + item.phoneNumber[0].type + '</div>'); 
+				html.push('</div>'); html.push('</div>'); 
+			
+				//html.push('<li id="' + key + '">' + val + '</li>'); }); 
+				console.log(html); $('#target').html(html.join('')); 
+			});
+		});
+	});
+	</script>
+</head>
+
+<body>
+	<div id="target"></div>
+</body>
+
+</html>

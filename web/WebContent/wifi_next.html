@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>전국 무료 와이파이 데이터</title>
+		<script type="text/javascript" src="js/jquery-3.4.1.js"></script>
+		<style type="text/css">
+			body{
+				background-color: #E7E7E8;
+	            background-image: url('img/maps_back.png');
+	            background-repeat: no-repeat;
+	            background-size: 100%;
+	            background-attachment: fixed;
+	            background-position: 0px;
+			}
+			.left_bar{
+				border: 1px solid #8bbbbd;
+				float: left;
+				background: white;
+				border-radius: 20px;
+				height: 100%;
+				width: 400px;
+			}
+			.top_bar{
+				border: 1px solid #8bbbbd;
+				float:none;
+				background: white;
+				border-radius: 20px;
+				height: 100px;
+				margin-top: 10px;
+				width: 1400px;
+				margin-left: 320px;
+			}
+			.div_center{
+				border: 1px solid #8bbbbd;
+				border-radius: 20px;
+				float:none;
+				width: 1400px; height: 790px;
+				margin-left: 320px;
+				background: white;
+				margin-top: 10px;
+			}
+			#map {
+            height: 400px;  /* 높이는 400 픽셀 */
+            width: 100%;  /* 너비는 웹 페이지의 너비 */
+        }
+		</style>
+	</head>
+	<body>
+		<div class="main_div" style="width: 1920px; height: 900px; margin: 10px" align="center">
+			<div class="left_bar">
+				<img alt="" src="img/wi-fi.png" style="margin-top: 10px;">
+			</div>
+			<div class="top_bar">
+				<font style="font-size: 65px; font-weight: bold; color: #56b7ba;">전국 무료 와이파이 표준 데이터</font>
+			</div>
+			<div class="div_center">
+				<div id="map"></div>
+				<script>
+				$(document).ready(function() {
+				     jQuery.ajax({
+				           type:"GET",
+				           url:"wifi.json",
+				           dataType:"JSON", // 옵션이므로 JSON으로 받을게 아니면 안써도 됨
+				           success : function(data) {
+				        	   $.each(data, function() {
+				        		     alert(this["fields"]);
+				        		     alert(this.age);
+				        		});
+				           },
+				           complete : function(data) {
+
+				           },
+				           error : function(xhr, status, error) {
+				                 alert("에러발생");
+				           }
+				     });
+				});
+				</script>
+			</div>
+		</div>
+	</body>
+</html>

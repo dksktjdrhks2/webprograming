@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>title</title>
+	<script type="text/javascript" src="js/jquery-3.4.1.js"></script>
+	<script type="text/javascript">
+		/* ctrl + shift + / : 해당 문법에 맞는 주석 자동으로 붙여줌. */
+		/* body부분부터 읽고 나서 자바 스크립트 실행하도록 함. */
+		$(function () {
+			//버튼을 누르는 이벤트가 발생했을 때, 조선일보 사이트 연결
+			$('.btn1').click(function () {
+				$.ajax({
+					url: "https://api.rss2json.com/v1/api.json?rss_url=http%3A%2F%2Fwww.chosun.com%2Fsite%2Fdata%2Frss%2Fent.xml&api_key=rooa9cfdnkctmsnpiftxnozlzfyaunxvudzwajoq",
+					data : {
+						url: "http://www.chosun.com/site/data/rss/ent.xml",
+						api_key: "rooa9cfdnkctmsnpiftxnozlzfyaunxvudzwajoq",
+						count:10
+					},
+					success: function (result) {
+						/* alert('조선일보 사이트에 접속 성공...!!! ')
+						alert(result) */
+						itemsValues = result.items;
+						//값들을 배열로 가지고 온다.
+						for(i = 0; i < itemsValues.length; i++){
+							title = itemsValues[i].title
+							link = itemsValues[i].link
+							thumbnail = itemsValues[i].thumbnail
+							$('div').append('<img src=' + thumbnail + '>')
+							$('div').append('- ' + 
+											'<a href=' + link + '>' +  
+											title + '</a><br>')
+						}
+
+					}
+				});
+			});
+		});
+	</script>
+</head>
+
+<body>
+	<input type="button" class="btn1" value="신문 기사 퍼오기">
+	<div></div>
+</body>
+
+</html>
